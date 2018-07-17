@@ -1,0 +1,30 @@
+#container{
+	background-color: yellow;
+	margin-top: 300px;
+	text-align: center;
+}
+
+.main{
+	margin-top: 10px;
+	text-align: center;
+	
+}
+.first-col{
+	height: 400px;
+	background: red;
+}
+.sec-col{
+	height: 400px;
+	background: yellow;
+}
+.thrd-col{
+	height: 400px;
+	background: blue;
+}
+.custom{
+margin: 200px;
+}
+
+ul{
+       background-color: red;
+}
