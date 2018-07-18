@@ -16,10 +16,13 @@ class MyComponent extends Component {
     event.preventDefault()
     console.log(this.state)
     axios.post('https://jsonplaceholder.typicode.com/posts', this.state)
-    .then(function (response) {
-      console.log(response);
+
+    .then((response)=> {
+      console.log(response)
+      this.props.loginSuccess()
     })
-    .catch(function (error) {
+
+    .catch((error)=> {
       console.log(error);
     });
     // 
