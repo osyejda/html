@@ -1,32 +1,53 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
 
 class MyComponent extends Component {
 
-
-
+  constructor(props){
+    super(props);
+    this.state = {
+      title: '',
+      body: '',
+      userId: 1
+    }
+  }
+  handle = (event)=>{
+    event.preventDefault()
+    console.log(this.state)
+    axios.post('https://jsonplaceholder.typicode.com/posts', this.state)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    // 
+  }
+  
+  handleChangeTitle = (event) => {
+    this.setState({title: event.target.value})
+  }
+  handleChangeBody = (event) => {
+    this.setState({body: event.target.value})
+  }
   render() {
+    console.log(this.state)
     return (
       <div className="container" style={{display: 'flex',flex:1, flex: 'row' , justifyContent: 'space-between'}}>
-      <div style={{backgroundColor: 'yellow',width:'400px', height: '300px'}}> </div>
-      <div style={{width:'400px'}}>
-      <form>
-      <div className="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-      </div>
-      <div className="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
-      </div>
-      <div className="form-group form-check">
-        <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-        <label className="form-check-label" for="exampleCheck1">Check me out</label>
-      </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
-    </form>
-    </div>
+       <form className="form-signin">
+        <h2 className="form-signin-heading">Post a post</h2>
+        <label  className="sr-only">Title</label>
+        <input type="text" id="inputEmail"  value = {this.state.title} onChange={this.handleChangeTitle} className="form-control" placeholder="Title" required autoFocus/>
+        <label htmlFor="inputPassword" className="sr-only">Password</label>
+        <input type="text"  onChange={this.handleChangeBody}  value = {this.state.body}  className="form-control" placeholder="Body" required/>
+        <div className="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"/> Remember me
+          </label>
+        </div>
+        <button className="btn btn-lg btn-primary btn-block"  onClick={this.handle}>Sign in</button>
+      </form>
     </div>
     );
   }
