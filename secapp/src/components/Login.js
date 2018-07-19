@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-class Login extends Component {
-
-  constructor(props){
-    
-  }
-
-  render() {
-    return (
-      <div className="container" style={{display: 'flex',flex:1, flex: 'row' , justifyContent: 'space-between'}}>
+const Login = (props) => {
+  return (
+    <div className="container" style={{display: 'flex',flex:1, flex: 'row' , justifyContent: 'space-between'}}>
       <form className="form-signin">
        <h2 className="form-signin-heading">Sing in</h2>
        <label  className="sr-only">Password</label>
@@ -21,10 +15,10 @@ class Login extends Component {
            <input type="checkbox" value="remember-me"/> Remember me
          </label>
        </div>
-       <button className="btn btn-lg btn-primary btn-block"  onClick={this.handle}>Sign in</button>
+       <button className="btn btn-lg btn-primary btn-block"  onClick={props.flagChange}>Sign in</button>
      </form>
-   </div>);
-  }
+   </div>
+  );
 }
 
 export default Login;
