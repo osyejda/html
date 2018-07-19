@@ -4,16 +4,14 @@ import './App.css';
 import './components/MyComponent'
 import MyComponent from './components/MyComponent'
 import SecComponent from './components/SecComponent'
+import Dashboard from './components/Dashborad'
 
 
 class App extends Component {
-
-  constructor(){
-    super()
+  
+    state = {
+    isLogged: false
   }
-       state = {
-        isLogged: false
-      }
 
   loginSuccess = ()=>{
     this.setState({isLogged: true})
@@ -22,7 +20,9 @@ class App extends Component {
   render() {
     return (
           <Fragment>
-            { !this.state.isLogged ?   <MyComponent name="osyed" loginSuccess = {this.loginSuccess}/> :  <h1> Dashboard </h1> }
+            { !this.state.isLogged ?   <MyComponent name="osyed" loginSuccess = {this.loginSuccess}/> :      
+             <Dashboard/>
+      }
           </Fragment>
     );
   }
